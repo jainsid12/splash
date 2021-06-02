@@ -84,7 +84,7 @@ const Login = props => {
           <Button text="Login" transparent={true} size="lg" />
         </TouchableOpacity>
         {/* google auth */}
-        {/* <GoogleAuth /> */}
+        <GoogleAuth />
         {/* footer */}
         <View
           style={{
