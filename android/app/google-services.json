@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "659212212521",
+    "project_id": "splash-4c73e",
+    "storage_bucket": "splash-4c73e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659212212521:android:570d27cd05f5225bbfbf38",
+        "android_client_info": {
+          "package_name": "com.splash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659212212521-6skgrkd7k0516760k3s6a3u568id7v9r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.splash",
+            "certificate_hash": "92ee06c87ec1da2508c6e641ae4763e54af04a30"
+          }
+        },
+        {
+          "client_id": "659212212521-iknojbqdcn8gtpsbad4ckt5u5kg1vs3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD39SLt0iH-JIxk3vUVGjc8364CNgu-Bng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659212212521-iknojbqdcn8gtpsbad4ckt5u5kg1vs3a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "659212212521-5bgf97qio4ifor1t7bi7cpnc5d2h3unq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.splash"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
