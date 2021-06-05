@@ -12,6 +12,8 @@ const BottomTab = () => (
   <Tab.Navigator
     labeled={false}
     tabBarOptions={{showLabel: false}}
+    initialRouteName="Home"
+    backBehavior="initialRoute"
     screenOptions={({route}) => ({
       tabBarIcon: ({focused}) => {
         let iconName;

@@ -7,38 +7,6 @@ GoogleSignin.configure({
   webClientId:
     '659212212521-iknojbqdcn8gtpsbad4ckt5u5kg1vs3a.apps.googleusercontent.com',
 });
-function Login() {
-  // Set an initializing state whilst Firebase connects
-  const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
-
-  // Handle user state changes
-  function onAuthStateChanged(user) {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  }
-
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, []);
-
-  if (initializing) return null;
-
-  if (!user) {
-    return (
-      <View>
-        <Text>Login</Text>
-      </View>
-    );
-  }
-
-  return (
-    <View>
-      <Text>Welcome {user.email}</Text>
-    </View>
-  );
-}
 
 function GoogleAuth() {
   async function onGoogleButtonPress() {
@@ -61,7 +29,6 @@ function GoogleAuth() {
             .catch(err => console.log(err))
         }
       />
-      <Login />
     </View>
   );
 }

@@ -8,6 +8,8 @@ import {
   Pressable,
   TextInput,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import Button from '../Button';
 import GoogleAuth from './GoogleAuth';
@@ -76,6 +78,7 @@ const Login = props => {
             </Pressable>
           )}
         </View>
+
         {/*  */}
         <Text style={style.forgot}>Forget Password?</Text>
         <TouchableOpacity
