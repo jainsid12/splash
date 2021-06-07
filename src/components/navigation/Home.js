@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import TabHead from './TabHead';
+import Button from '../Button';
 
 const Home = ({navigation}) => {
   const [toogle, setToogle] = useState(false);
@@ -70,6 +71,7 @@ const Home = ({navigation}) => {
           <View style={style.card}>
             <View style={{flexDirection: 'row'}}>
               <Text
+                onPress={() => setToogle(!toogle)}
                 style={[
                   style.toogle,
                   {backgroundColor: !toogle ? 'rgb(232,232,232)' : null},
@@ -77,6 +79,7 @@ const Home = ({navigation}) => {
                 Week
               </Text>
               <Text
+                onPress={() => setToogle(!toogle)}
                 style={[
                   style.toogle,
                   {backgroundColor: toogle ? 'rgb(232,232,232)' : null},
@@ -105,7 +108,12 @@ const Home = ({navigation}) => {
               </Text>
             </View>
             <View style={style.button}>
-              <Text style={style.buttonText}>Learn how to improve</Text>
+              <Button
+                text="Learn how to improve"
+                type="disable"
+                // size="lg"
+                // onPress={() => navigation.navigate('BottomTab')}
+              />
             </View>
           </View>
           {/* card 3 - last trip */}
@@ -223,15 +231,7 @@ const style = StyleSheet.create({
     alignSelf: 'center',
   },
   button: {
-    backgroundColor: 'rgb(175,175,175)',
-    borderRadius: 7,
     marginTop: 10,
-  },
-  buttonText: {
-    padding: 14,
-    textAlign: 'center',
-    fontWeight: '700',
-    fontSize: 15,
   },
   profile: {
     alignSelf: 'center',

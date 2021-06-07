@@ -41,15 +41,23 @@ const Container = ({navigation}) => {
         </ScrollView>
       </View>
 
-      <View style={style.button}>
+      <View style={style.buttonContainer}>
         {/* size : {'sm', 'md', 'lg'} */}
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Button text="Login" transparent={true} size="md" />
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => navigation.navigate('TnC')}>
-          <Button text="Register" transparent={false} size="md" />
-        </TouchableOpacity>
+        <View style={style.button}>
+          <Button
+            text="Login"
+            size="md"
+            onPress={() => navigation.navigate('Login')}
+          />
+        </View>
+        <View style={style.button}>
+          <Button
+            text="Register"
+            type="active"
+            size="md"
+            onPress={() => navigation.navigate('TnC')}
+          />
+        </View>
       </View>
     </View>
     // </Modal>
@@ -85,12 +93,15 @@ const style = StyleSheet.create({
     width: Dimensions.get('window').width,
     alignItems: 'center',
   },
-  button: {
+  buttonContainer: {
     flex: 3,
     flexDirection: 'row',
-    height: 40,
     marginBottom: 30,
-    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  button: {
+    marginHorizontal: 10,
+    marginTop: '25%',
   },
 });
 

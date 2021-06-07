@@ -10,7 +10,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Button from '../Button';
-import GoogleAuth from './GoogleAuth';
 import {useNavigation} from '@react-navigation/native';
 
 const Register = props => {
@@ -77,23 +76,26 @@ const Register = props => {
           )}
         </View>
         {/*  */}
-        <TouchableOpacity
-          style={{marginVertical: 8}}
-          onPress={() => navigation.navigate('BottomTab')}>
-          <Button text="Get started" transparent={true} size="lg" />
-        </TouchableOpacity>
-        {/* google auth */}
-        {/* <GoogleAuth /> */}
+        <View style={{marginVertical: 22}}>
+          <Button
+            text="Get started"
+            size="lg"
+            type="disable"
+            onPress={() => navigation.navigate('BottomTab')}
+          />
+        </View>
+
         {/* footer */}
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-          }}>
+        <View style={style.footer}>
           <Text style={style.footerText}>Already have an account?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Button text="Login" transparent={true} size="sm" />
-          </TouchableOpacity>
+          <View>
+            <Button
+              text="Login"
+              transparent={true}
+              size="sm"
+              onPress={() => navigation.navigate('Login')}
+            />
+          </View>
         </View>
         {/*  */}
       </View>
@@ -153,14 +155,16 @@ const style = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 14,
   },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 16,
+    alignItems: 'center',
+  },
   footerText: {
     color: 'rgb(190,190,190)',
-    marginBottom: 20,
-    // height: '100%',
-    textAlignVertical: 'center',
     fontSize: 15,
-    alignSelf: 'center',
-    alignContent: 'center',
+    paddingRight: 6,
   },
 });
 

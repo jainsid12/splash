@@ -45,11 +45,13 @@ const TnC = () => {
             {`Using your data, Safer Driver can provide you with rich behavioral insights and let’s you analyze the driving behavior aspects of your life. The data collected by Sentiance will be shared shared with RAC.\n\nThis information also helps us to train our software to give you and other users more accurate coaching.\n\nYou can request deletion or a copy of the data you provided, or stop any collection of data by removing the app from your phone.\n\nWe encourage you to review our full privacy policy, or ask any question regarding privacy via `}
             <Text style={style.primary}>privacy@sentiance.com.</Text>
           </Text>
-          <TouchableOpacity
-            style={style.button}
-            onPress={() => navigation.navigate('Register')}>
-            <Button text="Accept & proceed" />
-          </TouchableOpacity>
+          <View style={style.button}>
+            <Button
+              text="Accept & proceed"
+              type="active"
+              onPress={() => navigation.navigate('Register')}
+            />
+          </View>
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -81,6 +83,7 @@ const style = StyleSheet.create({
   },
   button: {
     marginTop: 40,
+    marginBottom: 20,
   },
 });
 

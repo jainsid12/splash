@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import auth from '@react-native-firebase/auth';
+import Button from './Button';
 
 const Profile = () => {
   const logoff = () => {
@@ -54,9 +55,14 @@ const Profile = () => {
               The best praise you can give us is to share your opinion about the
               app.
             </Text>
-            <TouchableOpacity style={style.button}>
-              <Text style={style.buttonText}>Give feedback</Text>
-            </TouchableOpacity>
+            <View>
+              {/* <Text style={style.buttonText}>Give feedback</Text> */}
+              <Button
+                text="Give feedback"
+                type="active"
+                onPress={() => console.log('open feedback model')}
+              />
+            </View>
           </View>
         </View>
       </ScrollView>

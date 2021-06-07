@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+import Button from '../../Button';
 
 const KnowledgeBites_details1 = () => {
   return (
@@ -60,21 +61,11 @@ const KnowledgeBites_details1 = () => {
             Share your experience so that we can help you better.
           </Text>
           <TouchableOpacity style={style.button}>
-            <Text style={style.buttonText}>Yes, it's useful</Text>
+            <Button text="Yes, it's useful" type="active" />
           </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              style.button,
-              {
-                marginBottom: 34,
-                backgroundColor: null,
-                borderWidth: 2,
-              },
-            ]}>
-            <Text style={[style.buttonText, {padding: 16}]}>
-              I don't like it
-            </Text>
-          </TouchableOpacity>
+          <View style={[style.button, {marginBottom: 34}]}>
+            <Button text="I don't like it" />
+          </View>
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -96,8 +87,6 @@ const style = StyleSheet.create({
     marginVertical: 12,
   },
   button: {
-    backgroundColor: 'rgb(248, 209, 71)',
-    borderRadius: 12,
     marginVertical: 8,
     marginHorizontal: 14,
   },

@@ -81,23 +81,26 @@ const Login = props => {
 
         {/*  */}
         <Text style={style.forgot}>Forget Password?</Text>
-        <TouchableOpacity
-          style={{marginVertical: 8}}
-          onPress={() => navigation.navigate('BottomTab')}>
-          <Button text="Login" transparent={true} size="lg" />
-        </TouchableOpacity>
+        <View style={{marginVertical: 8}}>
+          <Button
+            text="Login"
+            type="active"
+            size="lg"
+            onPress={() => navigation.navigate('BottomTab')}
+          />
+        </View>
         {/* google auth */}
-        <GoogleAuth />
+        {/* <GoogleAuth /> */}
         {/* footer */}
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-          }}>
+        <View style={style.footer}>
           <Text style={style.footerText}>Don't have an account yet?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-            <Button text="Get Started" transparent={true} size="sm" />
-          </TouchableOpacity>
+          <View>
+            <Button
+              text="Get Started"
+              size="sm"
+              onPress={() => navigation.navigate('Register')}
+            />
+          </View>
         </View>
         {/*  */}
       </View>
@@ -163,14 +166,16 @@ const style = StyleSheet.create({
     alignSelf: 'flex-end',
     margin: 12,
   },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 14,
+    alignItems: 'center',
+  },
   footerText: {
     color: 'rgb(190,190,190)',
-    marginBottom: 20,
-    // height: '100%',
-    textAlignVertical: 'center',
     fontSize: 15,
-    alignSelf: 'center',
-    alignContent: 'center',
+    paddingRight: 6,
   },
 });
 

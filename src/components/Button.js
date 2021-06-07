@@ -1,47 +1,40 @@
 import React from 'react';
-import {Pressable, View, Text, StyleSheet, Dimensions} from 'react-native';
+import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 const Button = props => {
-  const {text, transparent, size} = props;
+  const {text, type, size} = props;
   const width = {
     sm: 120,
     md: 180,
     lg: 370,
   };
-
+  const bgColor = {
+    disable: 'rgb(175,175,175)',
+    active: 'rgb(248, 209, 71)',
+  };
   return (
-    <View style={style(transparent, width[size]).container}>
-      {/* <Pressable style={style(transparent).button}> */}
+    <TouchableOpacity
+      style={style(bgColor[type], width[size]).container}
+      onPress={props.onPress}>
       <Text style={style().buttonText}>{text}</Text>
-      {/* </Pressable> */}
-    </View>
+    </TouchableOpacity>
   );
 };
 
-const style = (transparent, size) =>
+const style = (type, size) =>
   StyleSheet.create({
     container: {
       width: size,
-      marginTop: 'auto',
-      marginBottom: 20,
-      backgroundColor: transparent ? null : 'rgb(248, 209, 71)',
-      margin: 12,
+      backgroundColor: type,
       borderWidth: 2,
       borderRadius: 6,
-      borderColor: transparent ? null : 'rgb(248, 209, 71)',
+      borderColor: type,
     },
-    // button: {
-    //   backgroundColor: transparent ? 'rgb(248, 209, 71)' : null,
-    //   margin: 12,
-    //   borderWidth: 2,
-    //   borderRadius: 6,
-    //   borderColor: transparent ? 'rgb(248, 209, 71)' : null,
-    // },
     buttonText: {
       fontSize: 16,
-      padding: 12,
       textAlign: 'center',
       fontWeight: 'bold',
+      padding: 14,
     },
   });
 
