@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   View,
@@ -7,11 +7,12 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import auth from '@react-native-firebase/auth';
 import Button from './Button';
+import Feedback from './Feedback';
 
 const Profile = () => {
+  const [openFeedback, setOpenFeedback] = useState(false);
   const logoff = () => {
     // setVisible(false);
     auth()
@@ -20,7 +21,6 @@ const Profile = () => {
       .catch(err => console.log(err));
   };
 
-  const bgColor = 'rgb(235,76,65)';
   let info = (key, value, color) => (
     <View style={style.info}>
       <Text style={{fontSize: 16, color: color}}>{key}</Text>
@@ -60,12 +60,16 @@ const Profile = () => {
               <Button
                 text="Give feedback"
                 type="active"
-                onPress={() => console.log('open feedback model')}
+                onPress={() => setOpenFeedback(true)}
               />
             </View>
           </View>
         </View>
       </ScrollView>
+      <Feedback
+        openFeedback={openFeedback}
+        closeFeedback={() => setOpenFeedback(false)}
+      />
     </SafeAreaView>
   );
 };

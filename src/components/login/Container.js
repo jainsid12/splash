@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
 import {
-  Modal,
   Text,
   StyleSheet,
-  Platform,
   Image,
   ScrollView,
   View,
   Dimensions,
-  TouchableOpacity,
 } from 'react-native';
 import Button from '../Button';
 import Login from './Login';
@@ -47,7 +44,8 @@ const Container = ({navigation}) => {
           <Button
             text="Login"
             size="md"
-            onPress={() => navigation.navigate('Login')}
+            // onPress={() => navigation.navigate('Login')}
+            onPress={() => setOpenLogin(true)}
           />
         </View>
         <View style={style.button}>
@@ -59,6 +57,7 @@ const Container = ({navigation}) => {
           />
         </View>
       </View>
+      <Login openLogin={openLogin} closeLogin={() => setOpenLogin(false)} />
     </View>
     // </Modal>
   );

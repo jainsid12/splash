@@ -7,104 +7,121 @@ import {
   Image,
   Pressable,
   TextInput,
+  Modal,
   TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
 } from 'react-native';
 import Button from '../Button';
-import GoogleAuth from './GoogleAuth';
+import Register from './Register';
 import {useNavigation} from '@react-navigation/native';
+import GestureRecognizer from 'react-native-swipe-gestures';
 
 const Login = props => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
   const navigation = useNavigation();
+
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'rgba(26,26,26,0.95)'}}>
-      <View style={style.container}>
-        {/* close  */}
+    <GestureRecognizer onSwipeDown={() => props.closeLogin()}>
+      <Modal
+        visible={props.openLogin}
+        animationType="slide"
+        onRequestClose={() => props.closeLogin()}>
+        <SafeAreaView style={{flex: 1, backgroundColor: 'rgba(26,26,26,0.95)'}}>
+          <View style={style.container}>
+            {/* close  */}
 
-        <View style={style.close}>
-          <View style={{flex: 1}}>
-            <Text style={style.slider}></Text>
-          </View>
-          <Pressable
-            style={style.crossContainer}
-            onPress={() => navigation.goBack()}>
-            <Image
-              source={require('../../assets/cross.png')}
-              style={style.cross}
+            <View style={style.close}>
+              <View style={{flex: 1}}>
+                <Text style={style.slider}></Text>
+              </View>
+              <Pressable
+                style={style.crossContainer}
+                onPress={() => props.closeLogin()}>
+                <Image
+                  source={require('../../assets/cross.png')}
+                  style={style.cross}
+                />
+              </Pressable>
+            </View>
+
+            {/* header */}
+            <View style={{alignItems: 'center'}}>
+              <Text style={style.headerText}>Login</Text>
+              <Image
+                source={require('../../assets/smile.png')}
+                style={{marginVertical: 10}}
+              />
+              <Text style={style.headerText}>Welcome Back!</Text>
+            </View>
+
+            {/* credentials input */}
+
+            <TextInput
+              placeholder="Email address"
+              keyboardType="email-address"
+              style={[style.input, {padding: 16}]}
+              placeholderTextColor="#AFAFAF"
             />
-          </Pressable>
-        </View>
+            <View style={style.input}>
+              <TextInput
+                placeholder="Password"
+                secureTextEntry={!passwordVisible}
+                style={{padding: 16, fontSize: 16, width: '100%'}}
+                placeholderTextColor="#AFAFAF"
+              />
+              {passwordVisible ? (
+                <Pressable
+                  onPress={() => setPasswordVisible(!passwordVisible)}
+                  // android_ripple={{color: 'grey'}}
+                  style={style.visibility}>
+                  <Image source={require('../../assets/visibility.png')} />
+                </Pressable>
+              ) : (
+                <Pressable
+                  onPress={() => setPasswordVisible(!passwordVisible)}
+                  // android_ripple={{color: 'grey'}}
+                  style={style.visibility}>
+                  <Image source={require('../../assets/hide.png')} />
+                </Pressable>
+              )}
+            </View>
 
-        {/* header */}
-        <View style={{alignItems: 'center'}}>
-          <Text style={style.headerText}>Login</Text>
-          <Image
-            source={require('../../assets/smile.png')}
-            style={{marginVertical: 10}}
-          />
-          <Text style={style.headerText}>Welcome Back!</Text>
-        </View>
-
-        {/* credentials input */}
-
-        <TextInput
-          placeholder="Email address"
-          keyboardType="email-address"
-          style={[style.input, {padding: 16}]}
-          placeholderTextColor="#AFAFAF"
-        />
-        <View style={style.input}>
-          <TextInput
-            placeholder="Password"
-            secureTextEntry={!passwordVisible}
-            style={{padding: 16, fontSize: 16, width: '100%'}}
-            placeholderTextColor="#AFAFAF"
-          />
-          {passwordVisible ? (
-            <Pressable
-              onPress={() => setPasswordVisible(!passwordVisible)}
-              // android_ripple={{color: 'grey'}}
-              style={style.visibility}>
-              <Image source={require('../../assets/visibility.png')} />
-            </Pressable>
-          ) : (
-            <Pressable
-              onPress={() => setPasswordVisible(!passwordVisible)}
-              // android_ripple={{color: 'grey'}}
-              style={style.visibility}>
-              <Image source={require('../../assets/hide.png')} />
-            </Pressable>
-          )}
-        </View>
-
-        {/*  */}
-        <Text style={style.forgot}>Forget Password?</Text>
-        <View style={{marginVertical: 8}}>
-          <Button
-            text="Login"
-            type="active"
-            size="lg"
-            onPress={() => navigation.navigate('BottomTab')}
-          />
-        </View>
-        {/* google auth */}
-        {/* <GoogleAuth /> */}
-        {/* footer */}
-        <View style={style.footer}>
-          <Text style={style.footerText}>Don't have an account yet?</Text>
-          <View>
-            <Button
-              text="Get Started"
-              size="sm"
-              onPress={() => navigation.navigate('Register')}
+            {/*  */}
+            <Text style={style.forgot}>Forget Password?</Text>
+            <View style={{marginVertical: 8}}>
+              <Button
+                text="Login"
+                type="active"
+                size="lg"
+                onPress={() => {
+                  navigation.navigate('BottomTab'), props.closeLogin();
+                }}
+              />
+            </View>
+            {/* google auth */}
+            {/* <GoogleAuth /> */}
+            {/* footer */}
+            <View style={style.footer}>
+              <Text style={style.footerText}>Don't have an account yet?</Text>
+              <View>
+                <Button
+                  text="Get Started"
+                  size="sm"
+                  onPress={() => {
+                    navigation.navigate('TnC'), props.closeLogin();
+                  }}
+                />
+              </View>
+            </View>
+            {/*  */}
+            <Register
+              openRegister={openRegister}
+              closeRegister={() => setOpenRegister(false)}
             />
           </View>
-        </View>
-        {/*  */}
-      </View>
-    </SafeAreaView>
+        </SafeAreaView>
+      </Modal>
+    </GestureRecognizer>
   );
 };
 

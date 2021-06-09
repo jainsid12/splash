@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Image,
@@ -6,13 +6,13 @@ import {
   ScrollView,
   SafeAreaView,
   StyleSheet,
-  TouchableOpacity,
 } from 'react-native';
 import Button from '../Button';
-import {useNavigation} from '@react-navigation/native';
+import Register from './Register';
 
 const TnC = () => {
-  const navigation = useNavigation();
+  const [openRegister, setOpenRegister] = useState(false);
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={style.container}>
@@ -49,10 +49,14 @@ const TnC = () => {
             <Button
               text="Accept & proceed"
               type="active"
-              onPress={() => navigation.navigate('Register')}
+              onPress={() => setOpenRegister(true)}
             />
           </View>
         </ScrollView>
+        <Register
+          openRegister={openRegister}
+          closeRegister={() => setOpenRegister(false)}
+        />
       </View>
     </SafeAreaView>
   );

@@ -7,99 +7,110 @@ import {
   Image,
   Pressable,
   TextInput,
-  TouchableOpacity,
+  Modal,
 } from 'react-native';
 import Button from '../Button';
 import {useNavigation} from '@react-navigation/native';
+import GestureRecognizer from 'react-native-swipe-gestures';
 
 const Register = props => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigation = useNavigation();
+
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'rgba(26,26,26,0.95)'}}>
-      <View style={style.container}>
-        {/* close  */}
+    <GestureRecognizer onSwipeDown={() => props.closeRegister()}>
+      <Modal
+        visible={props.openRegister}
+        animationType="slide"
+        onRequestClose={() => props.closeRegister()}>
+        <SafeAreaView style={{flex: 1, backgroundColor: 'rgba(26,26,26,0.95)'}}>
+          <View style={style.container}>
+            {/* close  */}
 
-        <View style={style.close}>
-          <View style={{flex: 1}}>
-            <Text style={style.slider}></Text>
-          </View>
-          <Pressable
-            style={style.crossContainer}
-            onPress={() => navigation.goBack()}>
-            <Image
-              source={require('../../assets/cross.png')}
-              style={style.cross}
+            <View style={style.close}>
+              <View style={{flex: 1}}>
+                <Text style={style.slider}></Text>
+              </View>
+              <Pressable
+                style={style.crossContainer}
+                onPress={() => props.closeRegister()}>
+                <Image
+                  source={require('../../assets/cross.png')}
+                  style={style.cross}
+                />
+              </Pressable>
+            </View>
+
+            {/* header */}
+            <View style={{alignItems: 'center'}}>
+              <Text style={style.headerText}>Register</Text>
+            </View>
+
+            {/* credentials input */}
+            <TextInput
+              placeholder="Your Name"
+              style={[style.input, {padding: 16}]}
+              placeholderTextColor="#AFAFAF"
             />
-          </Pressable>
-        </View>
 
-        {/* header */}
-        <View style={{alignItems: 'center'}}>
-          <Text style={style.headerText}>Register</Text>
-        </View>
-
-        {/* credentials input */}
-        <TextInput
-          placeholder="Your Name"
-          style={[style.input, {padding: 16}]}
-          placeholderTextColor="#AFAFAF"
-        />
-
-        <TextInput
-          placeholder="Email address"
-          keyboardType="email-address"
-          style={[style.input, {padding: 16}]}
-          placeholderTextColor="#AFAFAF"
-        />
-        <View style={style.input}>
-          <TextInput
-            placeholder="Password"
-            secureTextEntry={!passwordVisible}
-            style={{padding: 16, fontSize: 16, width: '100%'}}
-            placeholderTextColor="#AFAFAF"
-          />
-          {passwordVisible ? (
-            <Pressable
-              onPress={() => setPasswordVisible(!passwordVisible)}
-              // android_ripple={{color: 'grey'}}
-              style={style.visibility}>
-              <Image source={require('../../assets/visibility.png')} />
-            </Pressable>
-          ) : (
-            <Pressable
-              onPress={() => setPasswordVisible(!passwordVisible)}
-              // android_ripple={{color: 'grey'}}
-              style={style.visibility}>
-              <Image source={require('../../assets/hide.png')} />
-            </Pressable>
-          )}
-        </View>
-        {/*  */}
-        <View style={{marginVertical: 22}}>
-          <Button
-            text="Get started"
-            size="lg"
-            type="disable"
-            onPress={() => navigation.navigate('BottomTab')}
-          />
-        </View>
-
-        {/* footer */}
-        <View style={style.footer}>
-          <Text style={style.footerText}>Already have an account?</Text>
-          <View>
-            <Button
-              text="Login"
-              transparent={true}
-              size="sm"
-              onPress={() => navigation.navigate('Login')}
+            <TextInput
+              placeholder="Email address"
+              keyboardType="email-address"
+              style={[style.input, {padding: 16}]}
+              placeholderTextColor="#AFAFAF"
             />
+            <View style={style.input}>
+              <TextInput
+                placeholder="Password"
+                secureTextEntry={!passwordVisible}
+                style={{padding: 16, fontSize: 16, width: '100%'}}
+                placeholderTextColor="#AFAFAF"
+              />
+              {passwordVisible ? (
+                <Pressable
+                  onPress={() => setPasswordVisible(!passwordVisible)}
+                  // android_ripple={{color: 'grey'}}
+                  style={style.visibility}>
+                  <Image source={require('../../assets/visibility.png')} />
+                </Pressable>
+              ) : (
+                <Pressable
+                  onPress={() => setPasswordVisible(!passwordVisible)}
+                  // android_ripple={{color: 'grey'}}
+                  style={style.visibility}>
+                  <Image source={require('../../assets/hide.png')} />
+                </Pressable>
+              )}
+            </View>
+            {/*  */}
+            <View style={{marginVertical: 22}}>
+              <Button
+                text="Get started"
+                size="lg"
+                type="disable"
+                onPress={() => {
+                  navigation.navigate('BottomTab'), props.closeRegister();
+                }}
+              />
+            </View>
+
+            {/* footer */}
+            <View style={style.footer}>
+              <Text style={style.footerText}>Already have an account?</Text>
+              <View>
+                <Button
+                  text="Login"
+                  transparent={true}
+                  size="sm"
+                  onPress={() => navigation.navigate('Container')}
+                />
+              </View>
+            </View>
+            {/*  */}
           </View>
-        </View>
-        {/*  */}
-      </View>
-    </SafeAreaView>
+        </SafeAreaView>
+      </Modal>
+    </GestureRecognizer>
   );
 };
 

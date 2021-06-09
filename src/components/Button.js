@@ -15,7 +15,7 @@ const Button = props => {
   return (
     <TouchableOpacity
       style={style(bgColor[type], width[size]).container}
-      onPress={props.onPress}>
+      onPress={() => (props.onPress ? props.onPress() : null)}>
       <Text style={style().buttonText}>{text}</Text>
     </TouchableOpacity>
   );
@@ -34,7 +34,7 @@ const style = (type, size) =>
       fontSize: 16,
       textAlign: 'center',
       fontWeight: 'bold',
-      padding: 14,
+      padding: 12,
     },
   });
 

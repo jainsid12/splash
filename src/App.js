@@ -30,16 +30,6 @@ const App = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
           name="TnC"
           component={TnC}
           options={{headerShown: false}}
@@ -60,6 +50,7 @@ const App = () => {
           options={{
             headerTitleAlign: 'center',
             title: 'Knowledge Bites',
+            headerBackTitle: null,
           }}
         />
       </Stack.Navigator>
