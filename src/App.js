@@ -8,6 +8,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Container from './components/login/Container';
 import Profile from './components/Profile';
+import Highlights from './components/Highlights';
 import KnowledgeBites_details1 from './components/navigation/knowledge-bite-details/KnowledgeBites_details1';
 
 const Stack = createStackNavigator();
@@ -38,6 +39,11 @@ const App = () => {
           name="BottomTab"
           component={BottomTab}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Highlights"
+          component={Highlights}
+          options={{headerTitleAlign: 'center', headerBackTitle: 'Home'}}
         />
         <Stack.Screen
           name="Profile"

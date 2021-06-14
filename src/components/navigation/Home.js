@@ -112,7 +112,7 @@ const Home = ({navigation}) => {
                 text="Learn how to improve"
                 type="disable"
                 // size="lg"
-                // onPress={() => navigation.navigate('BottomTab')}
+                onPress={() => navigation.navigate('Highlights')}
               />
             </View>
           </View>
