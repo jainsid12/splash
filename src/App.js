@@ -43,7 +43,11 @@ const App = () => {
         <Stack.Screen
           name="Highlights"
           component={Highlights}
-          options={{headerTitleAlign: 'center', headerBackTitle: 'Home'}}
+          options={{
+            headerTitleAlign: 'center',
+            headerBackTitle: 'Home',
+            title: 'Week',
+          }}
         />
         <Stack.Screen
           name="Profile"
