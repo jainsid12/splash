@@ -45,7 +45,7 @@ const App = () => {
           component={Highlights}
           options={{
             headerTitleAlign: 'center',
-            headerBackTitle: 'Home',
+            headerBackTitle: ' ',
             title: 'Week',
           }}
         />
